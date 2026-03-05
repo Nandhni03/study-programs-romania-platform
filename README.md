@@ -8,3 +8,9 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install playwright beautifulsoup4
 playwright install
+
+# Activate venv if not already
+source .venv/bin/activate
+
+# Run FastAPI
+uvicorn backend.main:app --reload
