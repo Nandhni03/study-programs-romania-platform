@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>UVT Study Programs Map</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-  <style>
-    html, body, #map { height: 100%; margin: 0; padding: 0; }
-  </style>
+<meta charset="UTF-8">
+<title>UVT Study Programs Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<style>
+html, body { height: 100%; margin: 0; padding: 0; font-family: sans-serif; }
+#map { height: 100%; width: 100%; }
+#sidebar {
+  position: absolute;
+  top: 0; right: -320px;
+  width: 300px;
+  height: 100%;
+  overflow-y: auto;
+  background: #f8f8f8;
+  border-left: 1px solid #ccc;
+  padding: 10px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+#sidebar.active { right: 0; }
+.program-card {
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  background: #fff;
+}
+.program-card h4 { margin: 0 0 4px 0; }
+.program-card .details { display: none; font-size: 0.9em; margin-top: 4px; }
+.program-card.active .details { display: block; }
+.see-more { color: blue; cursor: pointer; font-size: 0.9em; display: block; margin-top: 4px; }
+</style>
 </head>
 <body>
-  <div id="map"></div>
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <!-- FIXED: add /frontend prefix -->
-  <script src="/frontend/map.js"></script>
+<div id="map"></div>
+<div id="sidebar"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="/frontend/map.js"></script>
 </body>
 </html>

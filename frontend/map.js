@@ -1,30 +1,47 @@
 // Initialize map centered on Timisoara
-const map = L.map('map').setView([45.7537, 21.2257], 13);
-
-// OpenStreetMap tiles
+const map = L.map('map').setView([45.75, 21.23], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
+  attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
-// Fetch programs from backend API
-fetch('/programs')
+const sidebar = document.getElementById('sidebar');
+
+// Load programs JSON
+fetch('/data/uvt_programs_raw.json')
   .then(res => res.json())
-  .then(data => {
-    data.forEach(prog => {
-      // Default location if missing
-      const lat = prog.lat || 45.7537;
-      const lng = prog.lng || 21.2257;
+  .then(programs => {
 
-      const marker = L.marker([lat, lng]).addTo(map);
+    // Create one main marker for Timisoara
+    const marker = L.marker([45.75, 21.23]).addTo(map);
+    marker.bindPopup("Click to see all UVT programs").openPopup();
 
-      const popupContent = `
-        <b>${prog.program}</b><br/>
-        Faculty: ${prog.faculty}<br/>
-        Degree: ${prog.degree}<br/>
-        Language: ${prog.language}<br/>
-        <a href="${prog.url}" target="_blank">More info</a>
-      `;
-      marker.bindPopup(popupContent);
+    marker.on('click', () => {
+      sidebar.classList.toggle('active');
+      // Clear existing cards
+      sidebar.innerHTML = '';
+
+      // Add all programs as cards
+      programs.forEach(prog => {
+        const card = document.createElement('div');
+        card.className = 'program-card';
+        card.innerHTML = `
+          <h4>${prog.title}</h4>
+          <p>${prog.faculty || ''}</p>
+          <div class="details">
+            ${prog.link ? `<p><a href="${prog.link}" target="_blank">Program link</a></p>` : ''}
+            ${prog.phone ? `<p>Phone: ${prog.phone}</p>` : ''}
+            ${prog.email ? `<p>Email: ${prog.email}</p>` : ''}
+          </div>
+          <span class="see-more">See more</span>
+        `;
+        sidebar.appendChild(card);
+
+        const seeMore = card.querySelector('.see-more');
+        seeMore.addEventListener('click', () => {
+          card.classList.toggle('active');
+        });
+      });
     });
+
   })
-  .catch(err => console.error("Failed to load programs:", err));
+  .catch(err => console.error(err));

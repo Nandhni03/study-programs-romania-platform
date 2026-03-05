@@ -1,26 +1,27 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from pathlib import Path
 import json
 
-# FastAPI app instance (required by uvicorn)
 app = FastAPI(title="UVT Study Programs Map")
 
-# Path helpers
 BASE_DIR = Path(__file__).resolve().parent.parent
 FRONTEND_DIR = BASE_DIR / "frontend"
-DATA_FILE = BASE_DIR / "data/uvt_programs_raw.json"
+DATA_DIR = BASE_DIR / "data"
+DATA_FILE = DATA_DIR / "uvt_programs_raw.json"
 
-# Serve frontend static files
+# Mount static folders
 app.mount("/frontend", StaticFiles(directory=FRONTEND_DIR), name="frontend")
+app.mount("/data", StaticFiles(directory=DATA_DIR), name="data")
 
-# Route for root: serve index.html directly
 @app.get("/")
 def root():
-    return FileResponse(FRONTEND_DIR / "index.html")
+    index_file = FRONTEND_DIR / "index.html"
+    if index_file.exists():
+        return FileResponse(index_file)
+    return JSONResponse({"error": "index.html not found"}, status_code=404)
 
-# API endpoint: get all programs
 @app.get("/programs")
 def get_programs():
     if DATA_FILE.exists():

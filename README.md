@@ -14,3 +14,5 @@ source .venv/bin/activate
 
 # Run FastAPI
 uvicorn backend.main:app --reload
+
+should i use static files???
