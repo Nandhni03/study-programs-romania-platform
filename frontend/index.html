@@ -5,37 +5,58 @@
 <title>UVT Study Programs Map</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <style>
-html, body { height: 100%; margin: 0; padding: 0; font-family: sans-serif; }
+html, body { height: 100%; margin: 0; padding: 0; font-family: Arial, sans-serif; }
 #map { height: 100%; width: 100%; }
+
+/* Sidebar styling */
 #sidebar {
   position: absolute;
-  top: 0; right: -320px;
-  width: 300px;
+  top: 0; right: -340px; /* hidden by default */
+  width: 320px;
   height: 100%;
   overflow-y: auto;
-  background: #f8f8f8;
-  border-left: 1px solid #ccc;
+  background: #fefefe;
+  border-left: 1px solid #ddd;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
   padding: 10px;
   transition: right 0.3s ease;
   z-index: 1000;
 }
 #sidebar.active { right: 0; }
-.program-card {
-  border: 1px solid #ccc;
-  margin-bottom: 8px;
-  padding: 8px;
-  border-radius: 6px;
-  background: #fff;
+
+/* Sticky header for sidebar */
+#sidebar h2 {
+  position: sticky;
+  top: 0;
+  background: #fefefe;
+  margin: 0 0 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.2em;
+  text-align: center;
+  z-index: 100;
 }
-.program-card h4 { margin: 0 0 4px 0; }
-.program-card .details { display: none; font-size: 0.9em; margin-top: 4px; }
+
+/* Program cards */
+.program-card {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fff;
+  transition: box-shadow 0.2s ease;
+}
+.program-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+
+.program-card h4 { margin: 0 0 4px 0; font-size: 1em; }
+.program-card .details { display: none; font-size: 0.9em; margin-top: 6px; }
 .program-card.active .details { display: block; }
-.see-more { color: blue; cursor: pointer; font-size: 0.9em; display: block; margin-top: 4px; }
+.see-more { color: #007bff; cursor: pointer; font-size: 0.9em; display: block; margin-top: 6px; text-align: right; }
 </style>
 </head>
 <body>
 <div id="map"></div>
-<div id="sidebar"></div>
+<div id="sidebar"><h2>UVT Study Programs</h2></div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="/frontend/map.js"></script>

@@ -11,16 +11,16 @@ fetch('/data/uvt_programs_raw.json')
   .then(res => res.json())
   .then(programs => {
 
-    // Create one main marker for Timisoara
+    // Single marker for Timisoara
     const marker = L.marker([45.75, 21.23]).addTo(map);
-    marker.bindPopup("Click to see all UVT programs").openPopup();
+    marker.bindPopup("Click to see all UVT programs");
 
     marker.on('click', () => {
       sidebar.classList.toggle('active');
-      // Clear existing cards
-      sidebar.innerHTML = '';
 
-      // Add all programs as cards
+      // Clear old cards except header
+      sidebar.querySelectorAll('.program-card').forEach(c => c.remove());
+
       programs.forEach(prog => {
         const card = document.createElement('div');
         card.className = 'program-card';
@@ -36,10 +36,9 @@ fetch('/data/uvt_programs_raw.json')
         `;
         sidebar.appendChild(card);
 
+        // Toggle details
         const seeMore = card.querySelector('.see-more');
-        seeMore.addEventListener('click', () => {
-          card.classList.toggle('active');
-        });
+        seeMore.addEventListener('click', () => card.classList.toggle('active'));
       });
     });
 
