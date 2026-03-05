@@ -1,0 +1,101 @@
+[
+  {
+    "university": "UVT",
+    "program": "Asistență socială",
+    "faculty": "Asistenta Sociala",
+    "url": "https://admitere.uvt.ro/program/asistenta-sociala/",
+    "degree": "Licenta",
+    "language": "Română",
+    "city": "Timisoara",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "university": "UVT",
+    "program": "Planificare teritorială",
+    "faculty": "Planificare Teritoriala",
+    "url": "https://admitere.uvt.ro/program/planificare-teritoriala/",
+    "degree": "Licenta",
+    "language": "Română",
+    "city": "Timisoara",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "university": "UVT",
+    "program": "Design ambiental",
+    "faculty": "Design Ambiental",
+    "url": "https://admitere.uvt.ro/program/design-ambiental/",
+    "degree": "Licenta",
+    "language": "Română",
+    "city": "Timisoara",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "university": "UVT",
+    "program": "Administrație publică",
+    "faculty": "Administratie Publica",
+    "url": "https://admitere.uvt.ro/program/administratie-publica/",
+    "degree": "Licenta",
+    "language": "Română",
+    "city": "Timisoara",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "university": "UVT",
+    "program": "Matematică",
+    "faculty": "Matematica",
+    "url": "https://admitere.uvt.ro/program/matematica/",
+    "degree": "Licenta",
+    "language": "Română",
+    "city": "Timisoara",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "university": "UVT",
+    "program": "Psihologie - Științe cognitive (în limba engleză)",
+    "faculty": "Psihologie Stiinte Cognitive In Limba Engleza",
+    "url": "https://admitere.uvt.ro/program/psihologie-stiinte-cognitive-in-limba-engleza/",
+    "degree": "Licenta",
+    "language": "Română",
+    "city": "Timisoara",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "university": "UVT",
+    "program": "Comunicare și relații publice",
+    "faculty": "Comunicare Si Relatii Publice",
+    "url": "https://admitere.uvt.ro/program/comunicare-si-relatii-publice/",
+    "degree": "Licenta",
+    "language": "Română",
+    "city": "Timisoara",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "university": "UVT",
+    "program": "Inteligență artificială (în limba engleză)",
+    "faculty": "Inteligenta Artificiala In Limba Engleza",
+    "url": "https://admitere.uvt.ro/program/inteligenta-artificiala-in-limba-engleza/",
+    "degree": "Licenta",
+    "language": "Română",
+    "city": "Timisoara",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "university": "UVT",
+    "program": "Finanțe și bănci (învățământ la distanță)",
+    "faculty": "Finante Si Banci Invatamant La Distanta",
+    "url": "https://admitere.uvt.ro/program/finante-si-banci-invatamant-la-distanta/",
+    "degree": "Licenta",
+    "language": "Română",
+    "city": "Timisoara",
+    "lat": null,
+    "lng": null
+  }
+]
